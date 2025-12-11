@@ -17,8 +17,8 @@ This exercise guides you through building a complete **CRUD system**
    | Column | Type | Attributes |
    |--------|------|------------|
    | id     | INT  | PRIMARY KEY, AUTO_INCREMENT |
-   | name   | VARCHAR(100) |  |
-   | email  | VARCHAR(150) |  |
+   | name   | VARCHAR(50) |  |
+   | email  | VARCHAR(100) |  |
 
 ---
 
