@@ -15,7 +15,6 @@ if($f_name && $email && $l_name){
         $sql = "insert into students (FirstName,LastName,email) VALUES (\"$f_name\",\"$l_name\",\"$email\")";
         mysqli_query($conn,$sql);
         echo "data is saved".mysqli_affected_rows( $conn);
-        mysqli_close($conn);
     }
 }else{
     echo "Invalid input!";
@@ -34,6 +33,7 @@ if($f_name && $email && $l_name){
     action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>"
     method="POST"
     >
+        <input id="id" type="hidden" name="id" disabled>
         <label for="firstName">First Name:</label>
         <input id="firstName" type="text" name="firstName">
         <label for="lastName">Last Name:</label>
@@ -42,11 +42,24 @@ if($f_name && $email && $l_name){
         <input id="email" type="email" name="email">
         
         <input type="submit" name="submit" value="Add Student"/>
-
-        <a href="insert.php">Add Student</a>
-        <a href="delete.php">Delete Student</a>
-        <a href="select.php">Student's List</a>
-        <a href="update.php">Update an Information</a>
+        <?php
+             $sql = "select * from students";
+                $selected = mysqli_query($conn,$sql);
+                echo "<table>
+                <thead>
+                    <th>id</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                </thead>";
+                while($tb = mysqli_fetch_assoc($selected)){
+                    echo "<tr>
+                    <td>$tb[id]</td>
+                    <td>$tb[FirstName]</td>
+                    <td>$tb[LastName]</td>
+                    <td>$tb[email]</td>";
+                } 
+        ?>
     </form>
 </body>
 </html>
