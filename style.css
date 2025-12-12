@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+body{
+    background-color: #E6E6FF;
+    font-family: "Space Grotesk", sans-serif;
+}
+.title{
+    text-align: center;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    align-items: center;
+}
+input,label{
+    width: 50%;
+}
+input{
+    border: #0000FF solid 2px;
+    height: 38px;
+    border-radius: 12px;
+    background-color: transparent;
+}
+input[type="submit"]{
+    border: none;
+    margin-top: 12px;
+    cursor: pointer;
+    background-color: #5C5CFF;
+    color: #E6E6FF;
+}
+input[type="submit"]:hover{
+    transform: translate(0, -2px);
+}
+table{
+    margin: auto;
+    background-color: #B8B8FF;
+}
+thead{
+    background-color: #0000FF;
+    color: #E6E6FF;
+}
+button[name="delete"],button[name="update"]{
+    border: none;
+    background-color: red;
+    cursor: pointer;
+    border-radius: 12px;
+}
+button[name="update"]{
+    background-color: gold;
+}
+button[name="delete"]:active,button[name="update"]:active{
+    border: solid 2px black;
+}
