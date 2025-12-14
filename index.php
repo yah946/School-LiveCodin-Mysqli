@@ -11,18 +11,18 @@
     <h1 class="title">Student's Massar</h1>
     <form
     class="form"
-    action="insert.php?<?php if(isset($_GET['id'])){echo 'id=update';} ?>"
-    method="POST"
+    action=""
+    method=""
     >
-        <input id="id" type="hidden" name="id" value="<?php if(isset($_GET['id'])){echo $_GET['id'];} ?>">
+        <input id="id" type="hidden">
         <label for="firstName">First Name:</label>
-        <input id="firstName" type="text" name="firstName" value="<?php if(isset($_GET['id'])){echo $fname;}?>">
+        <input id="firstName" type="text">
         <label for="lastName">Last Name:</label>
-        <input id="lastName" type="text" name="lastName" value="<?php if(isset($_GET['id'])){echo $lname;}?>">
+        <input id="lastName" type="text">
         <label for="email">Email:</label>
-        <input id="email" type="email" name="email" value="<?php if(isset($_GET['id'])){echo $email;}?>">
+        <input id="email" type="email">
 
-        <button class="btn" type="submit" name="submit">Add a Student</button>
+        <button class="btn" type="submit">Add a Student</button>
 
     </form>
     <table border="1" width="90%" cellpadding="5">
@@ -41,10 +41,10 @@
                 <td>exemple</td>
                 <td>exemple@gamil.com</td>
                 <td>
-                    <a class='action-button update-button' href='insert.php?id=$row[id]'>update</a>
+                    <a class='action-button update-button' >update</a>
                 </td>
                 <td>
-                    <a class='action-button' href='delete.php?id=$row[id]'>delete</a>
+                    <a class='action-button' >delete</a>
                 </td>
             </tr>
             <tr>
@@ -53,10 +53,10 @@
                 <td>exemple</td>
                 <td>exemple@gamil.com</td>
                 <td>
-                    <a class='action-button update-button' href='insert.php?id=$row[id]'>update</a>
+                    <a class='action-button update-button' >update</a>
                 </td>
                 <td>
-                    <a class='action-button' href='delete.php?id=$row[id]'>delete</a>
+                    <a class='action-button' >delete</a>
                 </td>
             </tr>
             <tr>
@@ -65,10 +65,10 @@
                 <td>exemple</td>
                 <td>exemple@gamil.com</td>
                 <td>
-                    <a class='action-button update-button' href='insert.php?id=$row[id]'>update</a>
+                    <a class='action-button update-button' >update</a>
                 </td>
                 <td>
-                    <a class='action-button' href='delete.php?id=$row[id]'>delete</a>
+                    <a class='action-button' >delete</a>
                 </td>
             </tr>
             <tr>
@@ -77,10 +77,10 @@
                 <td>exemple</td>
                 <td>exemple@gamil.com</td>
                 <td>
-                    <a class='action-button update-button' href='insert.php?id=$row[id]'>update</a>
+                    <a class='action-button update-button' >update</a>
                 </td>
                 <td>
-                    <a class='action-button' href='delete.php?id=$row[id]'>delete</a>
+                    <a class='action-button' >delete</a>
                 </td>
             </tr>
         <tbody>
