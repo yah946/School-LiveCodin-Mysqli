@@ -3,6 +3,8 @@
 // var_dump($_SERVER,$_GET, $_POST);
 // echo '</pre>';
 include("config.php");
+$success = '';
+$error = '';
 $f_name = filter_input(INPUT_POST,"firstName",FILTER_SANITIZE_SPECIAL_CHARS);
 $l_name = filter_input(INPUT_POST,"lastName",FILTER_SANITIZE_SPECIAL_CHARS);
 $email = filter_input(INPUT_POST,"email",FILTER_VALIDATE_EMAIL);
@@ -11,10 +13,11 @@ if($f_name && $email && $l_name){
     if(isset($_POST['submit'])){
         $sql = "insert into students (FirstName,LastName,email) VALUES (\"$f_name\",\"$l_name\",\"$email\")";
         mysqli_query($conn,$sql);
-        echo "data is saved";
+        $success = 'data is been saved!';
+
     }
 }else{
-    echo "Invalid input!";
+    $error = "Invalid input!";
 }
 ?>
 <!DOCTYPE html>
@@ -40,40 +43,47 @@ if($f_name && $email && $l_name){
         <input id="lastName" type="text" name="lastName">
         <label for="email">Email:</label>
         <input id="email" type="email" name="email">
-        
+
         <input type="submit" name="submit" value="Add a Student"/>
+
+        <?php
+        if(!empty(($success))){
+            echo "<span calss='success'>$success</span>";
+        }else{
+            echo "<span1 calss='success'>$error</span1>";
+        }
+        ?>
+
     </form>
-    <?php
-        $sql = "select * from students";
-        $selected = mysqli_query($conn,$sql);
-        echo "<table border=\"1\" cellpadding=\"5\">
-            <thead>
-                <th>id</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Delete</th>
-                <th>Update</th>
-            </thead>";
-            while($tb = mysqli_fetch_assoc($selected)){
-                echo "<tr>
-                <td>$tb[id]</td>
-                <td>$tb[FirstName]</td>
-                <td>$tb[LastName]</td>
-                <td>$tb[email]</td>
-                <td>
-                    <form action=\"update.php\" method=\"POST\">
-                    <input type=\"hidden\" name=\"id\" value=\"<?php echo $tb[id]?>\">
-                    <button type=\"submit\" name=\"update\">update</button>
-                </form>
-                </td>
-                <td>
-                    <form action=\"delete.php\" method=\"POST\">
-                    <input type=\"hidden\" name=\"id\" value=\"<?php echo $tb[id]?>\">
-                    <button type=\"submit\" name=\"delete\">delete</button>
-                </form>
-                </td>";
-            }
-    ?>
+    <table border="1" cellpadding="5">
+        <thead>
+            <th>id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            <?php
+                include('config.php');
+                $sql = 'select * from students';
+                $select_all = mysqli_query($conn,$sql);
+                while($row = mysqli_fetch_assoc($select_all)){
+                    echo "
+                    <tr>
+                        <td>$row[id]</td>
+                        <td>$row[FirstName]</td>
+                        <td>$row[LastName]</td>
+                        <td>$row[email]</td>
+                        <td>
+                            <a class='action-button update-button' href='update.php?id=$row[id]'>update</a>
+                            <a class='action-button' href='delete.php?id=$row[id]'>delete</a>
+                        </td>
+                    </tr>
+                    ";
+                }
+            ?>
+        <tbody>
+    </table>
 </body>
 </html>
